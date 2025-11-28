@@ -1,69 +1,17 @@
-# React + TypeScript + Vite
+📘 **Assembly: Endgame**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+_A developer-themed word-guessing game built with React + TypeScript._
 
-Currently, two official plugins are available:
+Assembly: Endgame is a humorous twist on the classic word-guessing genre.
+Guess the hidden word before you run out of attempts — every wrong guess eliminates a programming language (farewell Python 🪦).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Win the game and enjoy a blast of **react-confetti** 🎉.
 
-## Expanding the ESLint configuration
+🚀 **Features**
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- 🔡 **Word Guessing Mechanics** – Reveal the secret word one letter at a time.
+- 💥 **Language Eliminations** – Every wrong guess removes a programming language from the assembly lineup.
+- 🎊 **Victory Confetti** – Implemented using react-confetti.
+- 🎨 **Tailwind Styled** – Clean, responsive UI.
+- 🧩 **Class Merging with cn** – Uses a lightweight utility (similar to clsx) for conditional Tailwind styles.
+- ⚡ **Fast React Environment** – Powered by Vite + TypeScript.
