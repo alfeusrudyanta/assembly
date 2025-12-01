@@ -1,44 +1,24 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
-import languages from './constant/languages';
+import { useEffect } from 'react';
 import { cn } from './lib/utils';
-import getFarewellText from './lib/gameUtils';
-import words from './constant/words';
+import { useGame } from './hooks/useGame';
+import { getFarewellText } from './lib/gameUtils';
 import ReactConfetti from 'react-confetti';
 
+import { languages } from './constant/languages';
+
 function App() {
-  const [currentWord, setCurrentWord] = useState<string>(
-    () => words[Math.floor(Math.random() * words.length)]
-  );
-  const [guessedLetters, setGuessedLetters] = useState<string[]>([]);
-  const wrongGuessCount = useRef<number>(0);
-
-  const lastGuessedLetter = guessedLetters[guessedLetters.length - 1];
-  const isLastGuessedLetterCorrect: boolean = currentWord
-    .split('')
-    .includes(lastGuessedLetter);
-
-  const alphabet = 'abcdefghijklmnopqrstuvwxyz';
-
-  const isGameWon = currentWord
-    .split('')
-    .every((letter) => guessedLetters.includes(letter));
-  const isGameLost = wrongGuessCount.current >= languages.length;
-  const isGameOver = isGameWon || isGameLost;
-
-  const addGuessedLetter = useCallback(
-    (letter: string) => {
-      if (!isGameOver) {
-        setGuessedLetters((prevLetters) =>
-          prevLetters.includes(letter) ? prevLetters : [...prevLetters, letter]
-        );
-
-        if (!currentWord.includes(letter)) {
-          wrongGuessCount.current++;
-        }
-      }
-    },
-    [currentWord, isGameOver]
-  );
+  const {
+    alphabet,
+    currentWord,
+    wrongGuessCount,
+    isLastGuessedLetterCorrect,
+    isGameOver,
+    isGameWon,
+    isGameLost,
+    guessedLetters,
+    addGuessedLetter,
+    handleNewGame,
+  } = useGame();
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -56,13 +36,7 @@ function App() {
     window.addEventListener('keydown', handleKeyDown);
 
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [addGuessedLetter, guessedLetters, isGameOver]);
-
-  const handleNewGame = () => {
-    setGuessedLetters([]);
-    wrongGuessCount.current = 0;
-    setCurrentWord(() => words[Math.floor(Math.random() * words.length)]);
-  };
+  }, [addGuessedLetter, handleNewGame, guessedLetters, isGameOver]);
 
   return (
     <main className='flex justify-center bg-[#282726] min-h-screen'>

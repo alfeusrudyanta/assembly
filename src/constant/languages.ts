@@ -52,4 +52,4 @@ const languages: Language[] = [
   },
 ];
 
-export default languages;
+export { languages };

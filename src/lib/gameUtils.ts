@@ -18,4 +18,4 @@ const getFarewellText = (language: string) => {
   return options[randomIndex];
 };
 
-export default getFarewellText;
+export { getFarewellText };

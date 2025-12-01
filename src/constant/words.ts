@@ -483,4 +483,4 @@ const words: string[] = [
   'young',
 ];
 
-export default words;
+export { words };
