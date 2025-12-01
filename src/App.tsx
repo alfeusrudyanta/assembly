@@ -88,10 +88,10 @@ function App() {
             role='status'
             className={cn(
               'min-h-[60px] rounded-[4px] p-[6px] flex flex-col items-center justify-center',
-              isGameOver && (isGameWon ? 'bg-[#10A95B]' : 'bg-[#BA2A2A]'),
               guessedLetters.length !== 0 &&
                 isLastGuessedLetterCorrect === false &&
-                'bg-[#7A5EA7]'
+                'bg-[#7A5EA7]',
+              isGameOver && (isGameWon ? 'bg-[#10A95B]' : 'bg-[#BA2A2A]')
             )}
           >
             {isGameOver ? (
